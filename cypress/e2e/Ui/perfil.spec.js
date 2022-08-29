@@ -30,7 +30,7 @@ describe('Funcionalidade Perfil', () => {
 
     });
 
-    it.only('Deve preencher perfil com campo obrigatório Conhecimentos em branco', () => {
+    it('Deve preencher perfil com campo obrigatório Conhecimentos em branco', () => {
         cy.get('[data-test="dashboard-createProfile"]').click()
         cy.get('#mui-component-select-status').click()
         cy.get('.MuiMenu-list li')
