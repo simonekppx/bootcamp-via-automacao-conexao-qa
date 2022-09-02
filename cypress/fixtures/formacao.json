@@ -1,0 +1,23 @@
+[
+    {
+        "escola": "Engenheiro de Qualidade",
+        "grau": "Via Hub",
+        "curso": "SP",
+        "dataInicio": "01/01/2020",
+        "dataFim": "01/01/2030",
+        "descricao": "ViaHub é top"
+
+    },
+    
+    {
+        "escola": "ETEC",
+        "grau": "curso técnico",
+        "curso": "Analita de TI",
+        "dataInicio": "01/01/2020",
+        "dataFim": "01/01/2030",
+        "descricao": "Curso tecnico"
+
+    }
+   
+    
+]

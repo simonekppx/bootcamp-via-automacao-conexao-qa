@@ -1,0 +1,15 @@
+[
+    {
+        "email": "usuariodeteste1@teste.com.br",
+        "senha": "R@diokppx123"
+    },
+    {
+        "email": "usuariot5@testes.com",
+        "senha": "R@diokppx123"
+    },
+    {
+        "email": "usuarioteste84@teste.com",
+        "senha": "R@diokppx123",
+        "perfil": "admin"
+    }
+]

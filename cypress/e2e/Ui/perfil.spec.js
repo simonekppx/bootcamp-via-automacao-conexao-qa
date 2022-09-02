@@ -52,4 +52,14 @@ describe('Funcionalidade Perfil', () => {
         //Resultado esperado
         cy.get('.MuiFormHelperText-root').should('contain', 'Conhecimentos é obrigatório')
     });
+
+    it('Deve criar perfil com sucesso - Commands', () => {
+        cy.criarPerfil('Via Hub', 'http://www.viahub.com', 'São Paulo', 'JUnit, Java Script', 'github.com', 'Estou aprendendo automação de testes com Cypress')
+        cy.get('[data-test="dashboard-editProfile"]').should('exist')
+    });
+
+    it.only('Deve validar mensagem de erro quando cadastra URL de site inválido', () => {
+        cy.criarPerfil('Via Hub', 'www.viahub', 'São Paulo, SP', 'Cypress', 'github.com', 'Estou aprendendo automação de testes com Cypress')
+        cy.contains('Digite uma url válida').should('be.visible')
+    });
 });
