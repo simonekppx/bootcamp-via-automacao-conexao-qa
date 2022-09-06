@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 /// <reference types="Cypress" />
+import auth from '../fixtures/auth.json'
 
 Cypress.Commands.add('navigate', (route) => {
     cy.intercept(route).as('loadpage')
@@ -69,4 +70,27 @@ Cypress.Commands.add('criarExperiencia', (posicao, empresa, local, dataInicio, d
     cy.get('#to').type(dataFim)
     cy.get('[rows="1"]').type(descricao)
     cy.get('[data-test="experience-submit"]').click()
+})
+
+Cypress.Commands.add("tokenJwt", () => {
+    cy.request({
+        method: 'POST',
+        url: '/api/auth',
+        body: auth
+    }).then((response) => {
+        return response.body.jwt
+    })
+})
+
+Cypress.Commands.add("criarPostagem", (token, value) => {
+cy.request({
+    method: 'POST',
+    url: '/api/posts',
+    headers: {
+        cookie: token
+    },
+    body: {
+        text: "bootcamp06-09-22-simone"
+    }
+})
 })
