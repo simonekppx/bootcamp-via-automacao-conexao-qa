@@ -26,6 +26,7 @@
 
 /// <reference types="Cypress" />
 import auth from '../fixtures/auth.json'
+import experienciaprof from '../fixtures/expprof.json'
 
 Cypress.Commands.add('navigate', (route) => {
     cy.intercept(route).as('loadpage')
@@ -83,14 +84,25 @@ Cypress.Commands.add("tokenJwt", () => {
 })
 
 Cypress.Commands.add("criarPostagem", (token, value) => {
-cy.request({
-    method: 'POST',
-    url: '/api/posts',
-    headers: {
-        cookie: token
-    },
-    body: {
-        text: "bootcamp06-09-22-simone"
-    }
+    cy.request({
+        method: 'POST',
+        url: '/api/posts',
+        headers: {
+            cookie: token
+        },
+        body: {
+            text: "bootcamp06-09-22-simone"
+        }
+    })
 })
+
+Cypress.Commands.add("criarExpProf", (token, value) => {
+    cy.request({
+        method: 'PUT',
+        url: '/api/profile/experience',
+        headers: {
+            Cookie: token
+        },
+        body: experienciaprof
+    })
 })
