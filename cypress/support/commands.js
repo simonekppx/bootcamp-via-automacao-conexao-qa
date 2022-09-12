@@ -106,3 +106,43 @@ Cypress.Commands.add("criarExpProf", (token, value) => {
         body: experienciaprof
     })
 })
+
+Cypress.Commands.add("criarUsuario", () => {
+
+    cy.request({
+
+        method: 'POST',
+
+        url: '/api/users',
+
+        body: {
+
+            "name": "Teste",
+
+            "email": "teste1@teste.com.br",
+
+            "password": "123456"
+
+          }
+
+    })
+
+})
+
+Cypress.Commands.add("deletarUsuario", (token, value) => {
+
+    cy.request({
+
+        method: 'DELETE',
+
+        url: '/api/profile',
+
+        headers: {
+
+            Cookie: token
+
+        }
+
+    })
+
+})

@@ -83,7 +83,8 @@ describe('Testes de exclusão de Perfil', () => {
 
     it('[DELETE] - Excluir Experiência profissonal', () => {
         cy.criarExpProf(token, "ExperienceID").then((response) => {
-            let id = response.body.experience._id
+            //let id = response.body.experience._id
+            let id = response.body.experience[0]._id
             cy.request({
                 method: 'DELETE',
                 url: `/api/profile/experience/${id}`,
@@ -100,3 +101,39 @@ describe('Testes de exclusão de Perfil', () => {
 
 
 })
+
+describe('Testes de exclusão de Usuário', () => {
+
+    let token
+
+    beforeEach(() => {
+
+        cy.tokenJwt().then((auth) => {
+
+            token = auth
+
+        })
+
+    })
+
+    it('[DELETE] - Excluir Usuário', () => {
+
+        cy.criarUsuario()
+
+        cy.deletarUsuario(token, "Usuário removido").then((response) => {
+
+
+
+        }).then((response) => {
+
+            expect(response.status).to.eq(200)
+
+            expect(response.body.msg).to.eq("Usuário removido")
+
+
+
+        })
+
+    });
+
+});
