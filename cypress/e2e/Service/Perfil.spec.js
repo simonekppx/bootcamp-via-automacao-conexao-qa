@@ -25,7 +25,7 @@ describe('Testes de criação de Perfil', () => {
         })
     })
 
-    it('[POST] - Atualizar um perfil', () => {
+        it('[POST] - Atualizar um perfil', () => {
         cy.request({
             method: 'POST',
             url: '/api/profile',
@@ -63,16 +63,31 @@ describe('Testes de criação de Perfil', () => {
 
         }).then((response) => {
             expect(response.status).to.eq(200)
-            
+
         })
     })
 
+
+
+})
+
+
+describe('Testes de exclusão de Perfil', () => {
+    let token
+
+    beforeEach(() => {
+        cy.tokenJwt().then((auth) => {
+            token = auth
+        })
+    });
+
     it('[DELETE] - Excluir Experiência profissonal', () => {
-        cy.criarExpProf(token, "ExperienciaID").then((response) => {
-            let id = response.body._id
+        cy.criarExpProf(token, "ExperienceID").then((response) => {
+            let id = response.body.experience._id
             cy.request({
                 method: 'DELETE',
                 url: `/api/profile/experience/${id}`,
+                failOnStatusCode: false,
                 headers: {
                     cookie: token
                 }
@@ -81,5 +96,7 @@ describe('Testes de criação de Perfil', () => {
             })
         })
     })
+
+
 
 })
